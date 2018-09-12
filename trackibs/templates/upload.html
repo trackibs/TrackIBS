@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>{{t}}</title>
+		<!-- href="/static/assets/style.css"-->
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style.css')}}" >
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/emoji.css')}}" >
+		<script src="{{ url_for('static',filename='assets/twemoji.min.js')}}"></script>
+		<script src="{{ url_for('static',filename='assets/emoji.js')}}"></script>
+	</head>
+<body>
+	<h1>{{ h }}</h1>
+	<ul>
+		<li><a href="/" class="{{ a1 }}">ALL</a></li>
+		<li><a href="/food" class="{{ a2 }}">Food</a></li>
+		<li><a href="/stool" class="{{ a3 }}">Stool</a></li>
+		<li><a href="/medication" class="{{ a4 }}">Medication</a></li>
+		<li><a href="/exercise" class="{{ a5 }}">Exercise</a></li>
+		<li style="float:right"><a href="/about">About</a></li>
+		<li style="float:right"><a href="/upload">Upload</a></li>
+
+	</ul>
+	<hr>
+<form action="/upload">
+  <input type="file" name="csv_file" accept="*.csv">
+  <input type="submit">
+</form>
+
+</body>
+</html>

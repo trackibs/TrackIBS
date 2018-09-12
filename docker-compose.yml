@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    build: .
+    environment:
+      FLASK_DEBUG: 1
+      FLASK_APP: app.py
+      PYTHONIOENCODING: "utf-8"
+    ports:
+     - "80:5000"
+    volumes:
+      - ./trackibs:/trackibs
+  mongo:
+    image: "mongo"
+    # environment:
+    #   POSTGRES_DB: mydb
+    #   POSTGRES_USER: admin
+    #   POSTGRES_PASSWORD: admin
+    # volumes:
+    #   - ./data:/var/lib/postgresql/data
+    # ports:
+    #  - "9999:8081"

@@ -1,0 +1,71 @@
+<html>
+
+<head>
+	<title>{{t}}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/style.css')}}">
+</head>
+
+<body>
+	<h1>{{ h }}</h1>
+	<ul>
+		<li><a href="/" class="{{ a1 }}">All</a></li>
+		<li><a href="/food" class="{{ a2 }}">Food</a></li>
+		<li><a href="/stool" class="{{ a3 }}">Stool</a></li>
+		<li><a href="/medication" class="{{ a4 }}">Medication</a></li>
+		<li><a href="/exercise" class="{{ a5 }}">Exercise</a></li>
+		<li style="float:right"><a href="/about">About</a></li>
+		<li style="float:right"><a href="/upload">Upload</a></li>
+
+	</ul>
+
+	<hr>
+	<div id="div_submit">
+		<form action="/action" method="POST">
+			<b><big><label>Add an Entry : </label></big></b><br>
+			<input type="text" name="date" size="30" placeholder="Date" /><br>
+			<input type="text" name="tracking" size="30" placeholder="Tracking" /><br>
+			<textarea name="string_value" rows="1" cols="28" placeholder="String Value"></textarea><br>
+			<input type="text" name="numerical_value" size="30" placeholder="Numerical Value" /><br>
+			<input type="text" name="additional_information" size="30" placeholder="Additional Information" /><br>
+			<button type="submit"> Create </button><br>
+		</form>
+	</div>
+
+	<div id="div_chart">
+		<img src='static/{{ c }}.png'>
+	</div>
+	<hr> {% if todos[0] %}
+	<b><big>To-Do LIST :</big></b>
+	<table>
+		<tr id="row">
+			<th class="date">date</th>
+			<th class="tracking">tracking</th>
+			<th class="string_value">string_value</th>
+			<th class="numerical_value">numerical_value</th>
+			<th class="additional_information">additional_information</th>
+			<th class="func1">Remove</th>
+			<th class="func2">Modify</th>
+		</tr>
+
+		{% for todo in todos %}
+		<tr class="datas">
+			<td class="date">{{ todo["date"] }}</td>
+			<td class="tracking">{{ todo["tracking"] }}</td>
+			<td class="string_value">{{ todo["string_value"] }}</td>
+			<td class="numerical_value">{{ todo["numerical_value"] }}</td>
+			<td class="additional_information">{{ todo["additional_information"] }}</td>
+			<td class="func1"><a href="./remove?_id={{ todo['_id'] }}"><button type="submit">DELETE</button></a></td>
+			<td class="func1"><a href="./update?_id={{ todo['_id'] }}"><button type="submit">EDIT</button></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+	<h4>No Tasks in the List !!</h4> {% endif %}
+	<hr/>
+
+	</table>
+	<script>
+	</script>
+</body>
+
+</html>
